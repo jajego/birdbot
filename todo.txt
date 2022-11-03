@@ -1,0 +1,16 @@
+- --txt tag to receive full .txt readout
+- wikipedia links to bird species, google maps link to area using long/lat
+- rare birds
+- ability to take multiple kinds of inputs
+    -rc KV
+    -ll -2.65 244.56
+
+-Clean up location names (remove numbers and punctuation)
+
+what if the birdbot generated a link to a simple react page that shows you the data in some way
+
+you can create a unique id for each query, store it in a database and send the link that contained the results from that query
+    --> react router
+    --> Sqlite js (or just store in a csv? might be overkill
+    
+modern ass landing with installation instructions
