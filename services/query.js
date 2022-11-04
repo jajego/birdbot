@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const addQuery = async (query) => {
   console.log(`Logging from addQuery:`);
   console.log(query);
-  let db = new sqlite3.Database("./db-server/db/instances.db", (err) => {
+  let db = new sqlite3.Database("./server/db/instances.json", (err) => {
     if (err) {
       console.error(err.message);
     }
@@ -26,7 +26,7 @@ const addQuery = async (query) => {
 
 const getQuery = async (queryId) => {
   return new Promise((resolve, reject) => {
-    let db = new sqlite3.Database("./db-server/db/instances.db", (err) => {
+    let db = new sqlite3.Database("./server/db/instances.json", (err) => {
       if (err) {
         console.error(err.message);
       }
