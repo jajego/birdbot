@@ -14,7 +14,7 @@ const regionCodes = getRegionCodes();
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("region")
+    .setName("region-rare")
     .setDescription("Replies with Pong!")
     .addStringOption((option) =>
       option
@@ -25,7 +25,7 @@ module.exports = {
   async execute(interaction) {
     // Need to check if country code is valid
     const regCode = interaction.options.getString("regioncode");
-    const data = await getSightingsFromRegion(regCode);
+    const data = await getSightingsRareFromRegion(regCode);
     if (data.length == 0) {
       return interaction.reply(
         `No sightings reported for country code ${regCode}!`

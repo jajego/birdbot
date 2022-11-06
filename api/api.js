@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const API_KEY = process.env.API_KEY;
 const back = 3;
+// may want to limit requests to 200
 
 const request = async (type, ...params) => {
   const options = {
@@ -12,9 +13,7 @@ const request = async (type, ...params) => {
   switch (type) {
     case "reg":
       var data = await fetch(
-        console.log(
-          'someone made a "reg" request'
-        )`https://api.ebird.org/v2/data/obs/${params[0]}/recent?back=${back}`,
+        `https://api.ebird.org/v2/data/obs/${params[0]}/recent?back=${back}&maxResults=50`,
         options
       ).then((response) => response.json());
       break;
@@ -22,7 +21,7 @@ const request = async (type, ...params) => {
       console.log('someone made a "reg-rare" request');
 
       var data = await fetch(
-        `https://api.ebird.org/v2/data/obs/${params[0]}/recent/notable?back=${back}`,
+        `https://api.ebird.org/v2/data/obs/${params[0]}/recent/notable?back=${back}&maxResults=50`,
         options
       ).then((response) => response.json());
       break;

@@ -13,6 +13,27 @@ app.get("/", (req, res) => {
   res.send([]);
 });
 
+let db = new sqlite3.Database("./server/db/instances.json", (err) => {
+  if (err) {
+    console.error(err.message);
+  }
+  console.log("Connected to the db database.");
+});
+
+db.serialize(() => {
+  console.log(`doing db.seralize from db.js`);
+  db.run(
+    `CREATE TABLE if not exists instances(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      queryId TEXT NOT NULL,
+      sightings TEXT NOT NULL,
+      queryContent TEXT NOT NULL,
+      created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    `
+  );
+});
+
 app.get("/query/:queryId", async (req, res, next) => {
   let db = new sqlite3.Database("./server/db/instances.json", (err) => {
     if (err) {
@@ -21,18 +42,7 @@ app.get("/query/:queryId", async (req, res, next) => {
     console.log("Connected to the db database.");
   });
   // creates table if one doesn't exist
-  db.serialize(() => {
-    console.log(`doing db.seralize from db.js`);
-    db.run(
-      `CREATE TABLE if not exists instances(
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      queryId TEXT NOT NULL,
-      sightings TEXT NOT NULL,
-      created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
-    );
-    `
-    );
-  });
+
   db.close((err) => {
     if (err) {
       console.error(err.message);

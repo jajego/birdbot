@@ -13,8 +13,8 @@ const addQuery = async (query) => {
   // Accepts query JSON object and adds it to the database
   db.serialize(() => {
     db.run(
-      `INSERT INTO instances(queryId, sightings) VALUES (?, ?)`,
-      [query.queryId, query.sightings],
+      `INSERT INTO instances(queryId, queryContent, sightings) VALUES (?, ?, ?)`,
+      [query.queryId, query.queryContent, query.sightings],
       (err) =>
         err
           ? console.log(err.message)
