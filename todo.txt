@@ -8,4 +8,8 @@ modern ass landing with installation instructions
 
 - Adjust the API to spit out more unique results
 
-allow bot to take more than 3 seconds to process a request
+- wave instead of straight line?
+
+- pins on a map for lng/lat, light up when card is seelcted
+
+-copy wikipedia link on mobile

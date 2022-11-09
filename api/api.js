@@ -13,7 +13,7 @@ const request = async (type, ...params) => {
   switch (type) {
     case "reg":
       var data = await fetch(
-        `https://api.ebird.org/v2/data/obs/${params[0]}/recent?back=${back}&maxResults=50`,
+        `https://api.ebird.org/v2/data/obs/${params[0]}/recent?back=${back}&maxResults=30`,
         options
       ).then((response) => response.json());
       break;
@@ -21,7 +21,7 @@ const request = async (type, ...params) => {
       console.log('someone made a "reg-rare" request');
 
       var data = await fetch(
-        `https://api.ebird.org/v2/data/obs/${params[0]}/recent/notable?back=${back}&maxResults=50`,
+        `https://api.ebird.org/v2/data/obs/${params[0]}/recent/notable?back=${back}&maxResults=30`,
         options
       ).then((response) => response.json());
       break;
@@ -29,19 +29,27 @@ const request = async (type, ...params) => {
       console.log('someone made a "reg-species" request');
 
       var data = await fetch(
-        `https://api.ebird.org/v2/data/obs/${params[0]}/recent/${params[1]}?back=${back}`,
+        `https://api.ebird.org/v2/data/obs/${params[0]}/recent/${params[1]}&back=${back}`,
         options
       ).then((response) => response.json());
       break;
     case "ll":
+      let lat = params[0];
+      let lng = params[1];
+      console.log(lat);
+      console.log(lng);
       var data = await fetch(
-        `https://api.ebird.org/v2/data/obs/geo/recent?lat=${params[0]}&lng=${params[1]}?back=${back}`,
+        `https://api.ebird.org/v2/data/obs/geo/recent?lat=${lat}&lng=${lng}&back=${back}&maxResults=30`,
         options
       ).then((response) => response.json());
       break;
     case "ll-rare":
+      let latRare = params[0];
+      let lngRare = params[1];
+      console.log(latRare);
+      console.log(lngRare);
       var data = await fetch(
-        `https://api.ebird.org/v2/data/obs/geo/recent/notable?lat=${params[0]}&lng=${params[1]}?back=${back}`,
+        `https://api.ebird.org/v2/data/obs/geo/recent/notable?lat=${latRare}&lng=${lngRare}&back=${back}&maxResults=30`,
         options
       ).then((response) => response.json());
       break;
@@ -94,11 +102,19 @@ const getSightingsRareFromRegion = async (regCode) => {
 };
 
 const getSightingsFromCoords = async (lat, lng) => {
+  console.log(`getSightingsFromCoords`);
+  console.log(lat);
+  console.log(lng);
   const data = await request("ll", lat, lng);
+  console.log(`Data from getSightingsFromCoords:`);
+  console.log(data);
   return processData(data);
 };
 
 const getSightingsRareFromCoords = async (lat, lng) => {
+  console.log(`getSightingsRareFromCoords`);
+  console.log(lat);
+  console.log(lng);
   const data = await request("ll-rare", lat, lng);
   return processData(data);
 };
