@@ -15,11 +15,11 @@ const regionCodes = getRegionCodes();
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("region")
-    .setDescription("Replies with Pong!")
+    .setDescription("Finds sightings within a region")
     .addStringOption((option) =>
       option
         .setName("regioncode")
-        .setDescription("The input to echo back")
+        .setDescription("Region code")
         .setRequired(true)
     ),
   async execute(interaction) {
@@ -27,9 +27,7 @@ module.exports = {
     const regCode = interaction.options.getString("regioncode");
     const data = await getSightingsFromRegion(regCode);
     if (data.length == 0) {
-      return interaction.reply(
-        `No sightings reported for country code ${regCode}!`
-      );
+      return interaction.reply(`No sightings reported for region ${regCode}!`);
     }
     const query = {
       queryId: crypto.randomBytes(16).toString("hex"),

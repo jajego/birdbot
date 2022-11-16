@@ -49,7 +49,36 @@ const getQuery = async (queryId) => {
   });
 };
 
+const getRecentQueries = async () => {
+  return new Promise((resolve, reject) => {
+    let db = new sqlite3.Database("./server/db/instances.json", (err) => {
+      if (err) {
+        console.error(err.message);
+      }
+      console.log("Connected to the db database.");
+    });
+    var responseObj;
+    db.all(
+      `SELECT * FROM instances ORDER BY created DESC LIMIT 50`,
+      (err, rows) => {
+        if (err) {
+          responseObj = {
+            error: err,
+          };
+        } else {
+          responseObj = {
+            rows: rows,
+          };
+          resolve(responseObj);
+        }
+        db.close();
+      }
+    );
+  });
+};
+
 module.exports = {
   addQuery,
   getQuery,
+  getRecentQueries,
 };

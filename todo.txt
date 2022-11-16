@@ -1,15 +1,5 @@
-- ability to take multiple kinds of inputs
-    -rc KV
-    -ll -2.65 244.56
-
--Clean up location names (remove numbers and punctuation)
-    
-modern ass landing with installation instructions
-
-- Adjust the API to spit out more unique results
-
-- wave instead of straight line?
-
-- pins on a map for lng/lat, light up when card is seelcted
-
 -copy wikipedia link on mobile
+- Species coords
+- Display species queries more sensibly since it's not visually interesting rn
+- Edit response messages to include region, coords, etc
+- give it a species name and get code back

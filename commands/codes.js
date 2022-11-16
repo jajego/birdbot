@@ -4,7 +4,7 @@ let json = require("../utils/codes.json");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("codes")
-    .setDescription("Replies with Pong!"),
+    .setDescription("Tells you all accepted region codes"),
   async execute(interaction) {
     console.log(json);
     console.log(json.length);

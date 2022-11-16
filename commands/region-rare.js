@@ -15,11 +15,13 @@ const regionCodes = getRegionCodes();
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("region-rare")
-    .setDescription("Replies with Pong!")
+    .setDescription(
+      "Finds notable sightings within a region (locally or nationally rare species, or otherwise unusual.)"
+    )
     .addStringOption((option) =>
       option
         .setName("regioncode")
-        .setDescription("The input to echo back")
+        .setDescription("Region code")
         .setRequired(true)
     ),
   async execute(interaction) {

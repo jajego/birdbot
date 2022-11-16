@@ -34,6 +34,30 @@ db.serialize(() => {
   );
 });
 
+app.get("/recent", async (req, res, next) => {
+  let db = new sqlite3.Database("./server/db/instances.json", (err) => {
+    if (err) {
+      console.error(err.message);
+    }
+    console.log("Connected to the db database.");
+  });
+  db.close((err) => {
+    if (err) {
+      console.error(err.message);
+    }
+    console.log("Close the database connection.");
+  });
+
+  try {
+    const queries = await queryServices.getRecentQueries();
+    console.log(queries);
+
+    res.send(queries);
+  } catch (e) {
+    next(e);
+  }
+});
+
 app.get("/query/:queryId", async (req, res, next) => {
   let db = new sqlite3.Database("./server/db/instances.json", (err) => {
     if (err) {

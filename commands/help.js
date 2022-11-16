@@ -8,7 +8,7 @@ module.exports = {
     let replyLines = [
       "\n",
       "__Sighting commands__\n",
-      "- **/species**: Fetch sightings using a species code. [Learn more at eBird.](https://science.ebird.org/en/use-ebird-data/the-ebird-taxonomy)\n",
+      "- **/species-reg, /species-coords**: Fetch sightings using a species code and either a region code or pair of coordinates. [Learn more about species codes at eBird.](https://science.ebird.org/en/use-ebird-data/the-ebird-taxonomy)\n",
       "- **/region** **/region-rare**: Fetch (notable) sightings using a region code\n",
       "- **/coords**, **/coords-rare**: Fetch (notable) sightings using latitude and longitude\n",
       "\n",

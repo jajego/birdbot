@@ -14,18 +14,14 @@ const regionCodes = getRegionCodes();
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("coords")
-    .setDescription("Replies with Pong!")
-    .addStringOption((option) =>
-      option
-        .setName("latitude")
-        .setDescription("The input to echo back")
-        .setRequired(true)
+    .setDescription(
+      "Finds sightings within 50km of a given latitude and longitude."
     )
     .addStringOption((option) =>
-      option
-        .setName("longitude")
-        .setDescription("The input to echo back")
-        .setRequired(true)
+      option.setName("latitude").setDescription("Latitude").setRequired(true)
+    )
+    .addStringOption((option) =>
+      option.setName("longitude").setDescription("Longitude").setRequired(true)
     ),
   async execute(interaction) {
     // Need to check if country code is valid
@@ -36,12 +32,12 @@ module.exports = {
     console.log(data);
     if (data.length == 0) {
       return interaction.reply(
-        `No sightings reported for coordinations ${lat}, ${lng}!`
+        `No sightings reported for coordinates ${lat}, ${lng}!`
       );
     }
     const query = {
       queryId: crypto.randomBytes(16).toString("hex"),
-      queryContent: `${lat}, ${lng}`,
+      queryContent: `${lat.substring(0, 6)}, ${lng.substring(0, 6)}`,
       sightings: JSON.stringify(data),
     };
     await addQuery(query);
