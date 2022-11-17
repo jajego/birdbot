@@ -79,6 +79,7 @@ app.get("/query/:queryId", async (req, res, next) => {
     const query = await queryServices.getQuery(req.params.queryId);
     res.send(query);
   } catch (e) {
+    console.log("error caught");
     next(e);
   }
 });
