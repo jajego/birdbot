@@ -13,7 +13,7 @@ const request = async (type, ...params) => {
   switch (type) {
     case "reg":
       var data = await fetch(
-        `https://api.ebird.org/v2/data/obs/${params[0]}/recent?back=${back}&maxResults=30`,
+        `https://api.ebird.org/v2/data/obs/${params[0]}/recent?back=${back}&maxResults=25`,
         options
       ).then((response) => response.json());
       break;
@@ -21,7 +21,7 @@ const request = async (type, ...params) => {
       console.log('someone made a "reg-rare" request');
 
       var data = await fetch(
-        `https://api.ebird.org/v2/data/obs/${params[0]}/recent/notable?back=${back}&maxResults=30`,
+        `https://api.ebird.org/v2/data/obs/${params[0]}/recent/notable?back=${back}&maxResults=25`,
         options
       ).then((response) => response.json());
       break;

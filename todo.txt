@@ -3,3 +3,5 @@
 - Display species queries more sensibly since it's not visually interesting rn
 - Edit response messages to include region, coords, etc
 - give it a species name and get code back
+
+fix line 62 of db.js so it can properly find?
