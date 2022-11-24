@@ -4,4 +4,4 @@
 - Edit response messages to include region, coords, etc
 - give it a species name and get code back
 
-fix line 62 of db.js so it can properly find?
+- Change bot code to post new queries to server instances.json

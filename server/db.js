@@ -77,6 +77,7 @@ app.get("/query/:queryId", async (req, res, next) => {
   console.log(req.params.queryId);
   try {
     const query = await queryServices.getQuery(req.params.queryId);
+
     res.send(query);
   } catch (e) {
     console.log("error caught");

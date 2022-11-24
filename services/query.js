@@ -4,24 +4,17 @@ const crypto = require("crypto");
 const addQuery = async (query) => {
   console.log(`Logging from addQuery:`);
   console.log(query);
-  let db = new sqlite3.Database("./server/db/instances.json", (err) => {
-    if (err) {
-      console.error(err.message);
-    }
-    console.log("Connected to the db database.");
+  const response = await fetch("https://db.ginkgo.page/addQuery/", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify(query),
   });
-  // Accepts query JSON object and adds it to the database
-  db.serialize(() => {
-    db.run(
-      `INSERT INTO instances(queryId, queryContent, sightings) VALUES (?, ?, ?)`,
-      [query.queryId, query.queryContent, query.sightings],
-      (err) =>
-        err
-          ? console.log(err.message)
-          : console.log(`A row has been inserted for ${query.queryId}`)
-    );
-  });
-  db.close();
+
+  return response;
 };
 
 const getQuery = async (queryId) => {
