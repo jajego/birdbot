@@ -37,7 +37,7 @@ module.exports = {
     }
     const query = {
       queryId: crypto.randomBytes(16).toString("hex"),
-      queryContent: regCode,
+      queryContent: region,
       sightings: JSON.stringify(data),
     };
     await addQuery(query);
