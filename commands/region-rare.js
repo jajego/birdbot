@@ -10,7 +10,7 @@ const {
   getRegionCodes,
 } = require("../api/api.js");
 
-const regionCodes = getRegionCodes();
+let codes = require("../utils/codes.json");
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -27,6 +27,8 @@ module.exports = {
   async execute(interaction) {
     // Need to check if country code is valid
     const regCode = interaction.options.getString("regioncode");
+    let region = codes.filter((country) => country["alpha-2"] == regCode);
+
     const data = await getSightingsRareFromRegion(regCode);
     if (data.length == 0) {
       return interaction.reply(
@@ -41,7 +43,7 @@ module.exports = {
     await addQuery(query);
 
     return interaction.reply(
-      `Pulled ${data.length} sightings from ${regCode}! Success! http://localhost:3001/q/${query.queryId}`
+      `Pulled ${data.length} sightings from ${region.name}! Success! http://localhost:3001/q/${query.queryId}`
     );
   },
 };
