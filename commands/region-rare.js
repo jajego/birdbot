@@ -27,7 +27,7 @@ module.exports = {
   async execute(interaction) {
     // Need to check if country code is valid
     const regCode = interaction.options.getString("regioncode");
-    let region = codes.filter((country) => country["alpha-2"] == regCode);
+    let region = codes.filter((country) => country["alpha-2"] !== regCode);
 
     const data = await getSightingsRareFromRegion(regCode);
     if (data.length == 0) {
@@ -43,7 +43,7 @@ module.exports = {
     await addQuery(query);
 
     return interaction.reply(
-      `Pulled ${data.length} sightings from ${region.name}! Success! http://localhost:3001/q/${query.queryId}`
+      `Pulled ${data.length} sightings from ${region.name}! http://localhost:3001/q/${query.queryId}`
     );
   },
 };

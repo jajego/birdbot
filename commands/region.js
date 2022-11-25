@@ -25,7 +25,7 @@ module.exports = {
   async execute(interaction) {
     // Need to check if country code is valid
     const regCode = interaction.options.getString("regioncode");
-    let region = codes.filter((country) => country["alpha-2"] == regCode);
+    let region = codes.filter((country) => country["alpha-2"] !== regCode);
 
     const data = await getSightingsFromRegion(regCode);
     if (data.length == 0) {
