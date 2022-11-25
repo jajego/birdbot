@@ -32,6 +32,13 @@ module.exports = {
     // Need to check if country code is valid
     const specCode = interaction.options.getString("speciescode");
     const regCode = interaction.options.getString("regioncode");
+    let region = "";
+    for (let country of codes) {
+      if (country["alpha-2"] == regCode) {
+        region = country.name;
+      }
+    }
+
     const data = await getSpeciesInRegion(specCode, regCode);
     if (data.length == 0) {
       return interaction.reply(
@@ -46,7 +53,7 @@ module.exports = {
     await addQuery(query);
 
     return interaction.reply(
-      `Pulled ${data.length} sightings of ${specCode} from ${regCode}! https://ginkgo.page/q/${query.queryId}`
+      `Pulled ${data.length} sightings of ${specCode} from ${region}! https://ginkgo.page/q/${query.queryId}`
     );
   },
 };

@@ -25,8 +25,12 @@ module.exports = {
   async execute(interaction) {
     // Need to check if country code is valid
     const regCode = interaction.options.getString("regioncode");
-    let region = codes.filter((country) => country["alpha-2"] !== regCode);
-
+    let region = "";
+    for (let country of codes) {
+      if (country["alpha-2"] == regCode) {
+        region = country.name;
+      }
+    }
     const data = await getSightingsFromRegion(regCode);
     if (data.length == 0) {
       return interaction.reply(`No sightings reported for region ${regCode}!`);
@@ -39,7 +43,7 @@ module.exports = {
     await addQuery(query);
 
     return interaction.reply(
-      `Pulled ${data.length} sightings from ${region.name}! https://ginkgo.page/q/${query.queryId}`
+      `Pulled ${data.length} sightings from ${region}! https://ginkgo.page/q/${query.queryId}`
     );
   },
 };
