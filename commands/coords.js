@@ -43,7 +43,7 @@ module.exports = {
     await addQuery(query);
 
     return interaction.reply(
-      `Pulled ${data.length} sightings at ${lat}, ${lng}! http://localhost:3000/q/${query.queryId}`
+      `Pulled ${data.length} sightings at ${lat}, ${lng}! https://ginkgo.page/q/${query.queryId}`
     );
   },
 };
