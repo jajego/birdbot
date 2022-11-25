@@ -43,7 +43,7 @@ module.exports = {
     await addQuery(query);
 
     return interaction.reply(
-      `Success! See results at http://localhost:3001/q/${query.queryId}`
+      `Pulled ${data.length} notable sightings at ${lat}, ${lng}! http://localhost:3001/q/${query.queryId}`
     );
   },
 };
