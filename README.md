@@ -9,6 +9,6 @@ If you would like to run Ginkgo locally, you will need to host:
 - The bot itself (this repo!)
 - [The database server](https://github.com/jajego/ginkgo-server) 
 - [The photo scraper](https://github.com/jajego/bird-scraper)
-- [The front-end](https://github.com/jajego/bird-scraper)
+- [The front-end](https://github.com/jajego/birdbot-frontend)
 
 Additionally, you will need to sign up for an API key from Cornell. [You can do so here for free.](https://ebird.org/api/keygen)
