@@ -47,7 +47,7 @@ module.exports = {
     let replyBody = "";
     let replyCloser = `See photos and locations [here](https://ginkgo.page/q/${query.queryId}).`;
     for (let sighting of data) {
-      replyBody = replyBody + sighting.comName + ", ";
+      replyBody = replyBody + "- " + sighting.comName + "\n";
     }
     reply = `${replyHeader} \`\`\`${replyBody.substring(
       0,
