@@ -24,7 +24,7 @@ module.exports = {
     ),
   async execute(interaction) {
     // Need to check if country code is valid
-    const regCode = interaction.options.getString("regioncode");
+    const regCode = interaction.options.getString("regioncode").toUpperCase();
     let region = "";
     for (let country of codes) {
       if (country["alpha-2"] == regCode) {
