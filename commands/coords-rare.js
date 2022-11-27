@@ -49,7 +49,7 @@ module.exports = {
     for (let sighting of data) {
       replyBody = replyBody + "- " + sighting.comName + "\n";
     }
-    reply = `${replyHeader} \`\`\`${replyBody}\`\`\`${replyCloser}`;
+    reply = `${replyHeader} \`\`\`${replyBody}\`\`\`\n${replyCloser}`;
 
     return interaction.reply(reply);
   },
