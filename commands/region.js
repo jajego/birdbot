@@ -47,9 +47,9 @@ module.exports = {
     await addQuery(query);
 
     let reply = "";
-    let replyHeader = `**Pulled ${data.length} sightings from ${region}:**`;
+    let replyHeader = `**Pulled ${data.length} sightings from ${region}:** \n`;
     let replyBody = "";
-    let replyCloser = `See photos and locations at https://ginkgo.page/q/${query.queryId}`;
+    let replyCloser = `See photos and locations [here](https://ginkgo.page/q/${query.queryId}).`;
     for (let sighting of data) {
       replyBody = replyBody + sighting.comName + ", ";
     }
