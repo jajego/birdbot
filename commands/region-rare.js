@@ -33,6 +33,10 @@ module.exports = {
         region = country.name;
       }
     }
+
+    if (region == "" || region == undefined) {
+      region = regCode;
+    }
     const data = await getSightingsRareFromRegion(regCode);
     if (data.length == 0) {
       return interaction.reply(
@@ -46,8 +50,17 @@ module.exports = {
     };
     await addQuery(query);
 
-    return interaction.reply(
-      `Pulled ${data.length} sightings from ${region}! https://ginkgo.page/q/${query.queryId}`
-    );
+    let reply = "";
+    let replyHeader = `**Pulled ${data.length} sightings from ${region}:**`;
+    let replyBody = "";
+    let replyCloser = `See photos and locations at https://ginkgo.page/q/${query.queryId}`;
+    for (let sighting of data) {
+      replyBody = replyBody + sighting.comName + ", ";
+    }
+    reply = `${replyHeader} \`\`\`${replyBody.substring(
+      0,
+      replyBody.length - 2
+    )}\`\`\` \n${replyCloser}`;
+    return interaction.reply(reply);
   },
 };

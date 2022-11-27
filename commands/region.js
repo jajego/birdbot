@@ -56,7 +56,7 @@ module.exports = {
     reply = `${replyHeader} \`\`\`${replyBody.substring(
       0,
       replyBody.length - 2
-    )}\`\`\` \n ${replyCloser}`;
+    )}\`\`\` \n${replyCloser}`;
     return interaction.reply(reply);
   },
 };
