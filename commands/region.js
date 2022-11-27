@@ -31,6 +31,10 @@ module.exports = {
         region = country.name;
       }
     }
+
+    if (region == "" || region == undefined) {
+      region = regCode;
+    }
     const data = await getSightingsFromRegion(regCode);
     if (data.length == 0) {
       return interaction.reply(`No sightings reported for region ${regCode}!`);
@@ -42,14 +46,14 @@ module.exports = {
     };
     await addQuery(query);
 
-    let reply = `Sightings (${data.length}): `;
+    let reply = `*Sightings (${data.region}):*\n`;
     for (let sighting of data) {
       reply = reply + sighting.comName + ", ";
     }
     reply =
-      reply.substring(0, reply.length - 3) +
+      reply.substring(0, reply.length - 2) +
       "\n" +
-      "See photos and locations at https://ginkgo.page/q/${query.queryId}";
+      `See photos and locations at https://ginkgo.page/q/${query.queryId}`;
     return interaction.reply(reply);
   },
 };
