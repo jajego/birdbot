@@ -1,7 +1,19 @@
--copy wikipedia link on mobile
-- Species coords
+NEW FEATURES
+****************************************************************************************
 - Display species queries more sensibly since it's not visually interesting rn
-- Edit response messages to include region, coords, etc
 - give it a species name and get code back
+- Have info auto display when bird is centered on screen?
 
-- Change bot code to post new queries to server instances.json
+
+PERFORMANCE
+****************************************************************************************
+- Cache links on the server so scraper only gets run once
+    --> POST request to new .json file(cachedLinks.json?)
+    --> schema: queryId (text), links (text/list)
+    --> Will require React frontend to GET the server for links instead of checking local storage
+
+
+BUGS
+****************************************************************************************
+- Landing resizing is currently funky
+    --> Overall should be condensed

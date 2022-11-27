@@ -42,8 +42,14 @@ module.exports = {
     };
     await addQuery(query);
 
-    return interaction.reply(
-      `Pulled ${data.length} sightings from ${region}! https://ginkgo.page/q/${query.queryId}`
-    );
+    let reply = `Sightings (${data.length}): `;
+    for (let sighting of data) {
+      reply = reply + sighting.comName + ", ";
+    }
+    reply =
+      reply.substring(0, reply.length - 3) +
+      "\n" +
+      "See photos and locations at https://ginkgo.page/q/${query.queryId}";
+    return interaction.reply(reply);
   },
 };
