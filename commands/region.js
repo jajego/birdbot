@@ -46,14 +46,14 @@ module.exports = {
     };
     await addQuery(query);
 
-    let reply = `**Pulled ${data.length} sightings from ${region}:**\n`;
+    let reply = "";
+    let replyHeader = `**Pulled ${data.length} sightings from ${region}:**\n`;
+    let replyBody = "";
+    let replyCloser = `See photos and locations at https://ginkgo.page/q/${query.queryId}`;
     for (let sighting of data) {
-      reply = reply + sighting.comName + ", ";
+      replyBody = replyBody + sighting.comName + ", ";
     }
-    reply =
-      reply.substring(0, reply.length - 2) +
-      "\n" +
-      `See photos and locations at https://ginkgo.page/q/${query.queryId}`;
+    reply = `${replyHeader} \`\`\`${replyBody}\`\`\` ${replyCloser}`;
     return interaction.reply(reply);
   },
 };
