@@ -46,7 +46,7 @@ module.exports = {
     };
     await addQuery(query);
 
-    let reply = `*Sightings (${data.region}):*\n`;
+    let reply = `**Pulled ${data.length} sightings from ${region}:**\n`;
     for (let sighting of data) {
       reply = reply + sighting.comName + ", ";
     }
