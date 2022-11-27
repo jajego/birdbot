@@ -57,10 +57,7 @@ module.exports = {
     for (let sighting of data) {
       replyBody = replyBody + "- " + sighting.comName + "\n";
     }
-    reply = `${replyHeader} \`\`\`${replyBody.substring(
-      0,
-      replyBody.length - 2
-    )}\`\`\`${replyCloser}`;
+    reply = `${replyHeader} \`\`\`${replyBody}\`\`\`${replyCloser}`;
     return interaction.reply(reply);
   },
 };
