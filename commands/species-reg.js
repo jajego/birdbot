@@ -10,7 +10,7 @@ const {
   getRegionCodes,
 } = require("../api/api.js");
 
-const regionCodes = getRegionCodes();
+let codes = require("../utils/codes.json");
 
 module.exports = {
   data: new SlashCommandBuilder()
