@@ -1,5 +1,5 @@
 # Ginkgo 
-Ginkgo is a Discord bot that makes requests to Cornell's Lab of Ornithology eBird API to provide server members with constantly updated bird sighting data from around the world. It provides the ability to query by region, a pair of coordinate points, or species. It also scrapes Wikipedia for high resolution photos of each sighted bird and caches the links for future use.
+[Ginkgo](https://ginkgo.page) is a Discord bot that makes requests to Cornell's Lab of Ornithology eBird API to provide server members with constantly updated bird sighting data from around the world. It provides the ability to query by region, a pair of coordinate points, or species. It also scrapes Wikipedia for high resolution photos of each sighted bird and caches the links for future use.
 
 ## Stack
 Ginkgo was built with React, Discord.js, Node.js, Express, Flask, and SQLite.
