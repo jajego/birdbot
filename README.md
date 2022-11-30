@@ -3,9 +3,9 @@
 
 ## Examples
 
-- Ohio: https://www.ginkgo.page/q/a9a2e6ef53f163efef3ab6e518fe8541
-- Japan: https://www.ginkgo.page/q/4af16da431e1d461558b7b3e8c8bf6f0
-- Latvia: https://ginkgo.page/q/0523ee650810ccb75445388f22194311
+- Ohio (USA): https://ginkgo.page/q/3deea5cfa020c63acdfb029790f44e37
+- Japan: https://ginkgo.page/q/46183b3d8b1c0bafc73e127e0b38f600
+- New Caledonia: https://ginkgo.page/q/1294593b9ff84bf139199d6063dbfced
 
 ## Local use
 If you would like to run Ginkgo locally, you will need to host:
