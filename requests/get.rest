@@ -1,7 +1,0 @@
-GET http://localhost:3000/
-content-type: application/json
-
-{
-    "name": "goku",
-    "queryId": "hsjkldhfi8w4hyruoqwihjdsabkbfg"
-}
